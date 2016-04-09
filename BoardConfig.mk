@@ -28,10 +28,10 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --dt device/oneplus/onyx/dt.img
 
 # prebuilt kernel
-TARGET_PREBUILT_KERNEL := device/oneplus/onyx/kernel
+# TARGET_PREBUILT_KERNEL := device/oneplus/onyx/kernel
 # else uncomment below to build from sauce
-# TARGET_KERNEL_SOURCE := kernel/oneplus/onyx
-# TARGET_KERNEL_CONFIG := onyx_defconfig
+TARGET_KERNEL_SOURCE := kernel/oneplus/onyx
+TARGET_KERNEL_CONFIG := msm8974_defconfig
 
 BOARD_BOOTIMAGE_PARTITION_SIZE := 25165824
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 25165824
@@ -56,3 +56,23 @@ BOARD_SUPPRESS_SECURE_ERASE := true
 RECOVERY_SDCARD_ON_DATA := true
 TW_EXTRA_LANGUAGES := true
 BOARD_CUSTOM_BOOTIMG_MK := device/oneplus/onyx/custombootimg.mk
+DEVICE_RESOLUTION := 1080x1920
+
+TARGET_RECOVERY_IS_MULTIROM := true
+MR_INPUT_TYPE := type_b
+MR_INIT_DEVICES := device/oneplus/onyx/mr_init_devices.c
+MR_DPI := xhdpi
+MR_DPI_FONT := 480
+MR_FSTAB := device/oneplus/onyx/recovery.fstab
+MR_KEXEC_MEM_MIN := 0x20000000
+MR_USE_MROM_FSTAB := true
+MR_KEXEC_DTB := true
+MR_DEVICE_HOOKS := device/oneplus/onyx/mr_hooks.c
+MR_DEVICE_HOOKS_VER := 4
+MR_CONTINUOUS_FB_UPDATE := true
+#MR_USE_QCOM_OVERLAY := true
+#MR_QCOM_OVERLAY_HEADER := device/oneplus/onyx/framebuffer_qcom_overlay.h
+MR_QCOM_OVERLAY_CUSTOM_PIXEL_FORMAT := MDP_RGBX_8888
+MR_PIXEL_FORMAT := "RGBX_8888"
+MR_ENCRYPTION := true
+
